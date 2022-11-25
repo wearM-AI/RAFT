@@ -14,6 +14,10 @@ conda create --name raft
 conda activate raft
 conda install pytorch=1.6.0 torchvision=0.7.0 cudatoolkit=10.1 matplotlib tensorboard scipy opencv -c pytorch
 ```
+bugfix: run this command line to build correct pytorch/cuda env for RTX3060
+```Shell
+conda install -c pytorch -c conda-forge pytorch=1.10.0 torchvision cudatoolkit=11.3
+```
 
 ## Demos
 Pretrained models can be downloaded by running
@@ -26,6 +30,15 @@ You can demo a trained model on a sequence of frames
 ```Shell
 python demo.py --model=models/raft-things.pth --path=demo-frames
 ```
+
+bugfix: if you face opencv issues, please run these command lines to install new version of opencv
+```Shell
+conda remove opencv
+conda install -c menpo opencv
+pip install --upgrade pip
+pip install opencv-contrib-python
+```
+
 
 ## Required Data
 To evaluate/train RAFT, you will need to download the required datasets. 
